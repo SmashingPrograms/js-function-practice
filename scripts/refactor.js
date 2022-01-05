@@ -32,7 +32,18 @@
   }
   
   // Put your answer below -------------------------
+
+  // 1. Input: N/A
+  // 2. Output: console log
+  // 3. Purpose: To console log "Something Cool!"
+  // 4. Contract:
+  //// Function name: anonymous, but variable name is doSomethingCoolAnonymously
+  //// Parameters and types: none (undefined)
+  //// Return values and types: does not return anything
   
+  let doSomethingCoolAnonymously = () => {
+    console.log("Something Cool!");
+  };
   
   // -----------------------------------------------
   
@@ -52,7 +63,18 @@
   setTimeout(sayHi, 2000);
   
   // Put your answer below -------------------------
-  
+
+  // 1. Input: N/A
+  // 2. Output: alert
+  // 3. Purpose: To alert "Hello, World!" (within setTimeout which will make that happen in 2 seconds [2000])
+  // 4. Contract:
+  //// Function name: none
+  //// Parameters and types: none
+  //// Return values and types: no return
+
+  setTimeout(function () {
+    alert("Hello, World!");
+  }, 2000);
   
   // -----------------------------------------------
   
@@ -70,7 +92,7 @@
   // [d]: x then z
   
   // Please explain your answer.
-  
+
   var letter = "x";
   
   setTimeout(function(){
@@ -83,6 +105,15 @@
   
   // Put your answer below -------------------------
   
+  // 1. Input: none
+  // 2. Output: console log with string and variable of string passed in
+  // 3. Purpose: To use console log to test variable scope
+  // 4. Contract:
+  //// Function name: none
+  //// Parameters and types: none
+  //// Return values and types: none
+
+  // The answer is [c]: z then y. The reason that z comes first is that variables have a prioritized scope over functions proper, which is what setTimeout is. Note that when I tested by changing it to an anonymous function only, without setTimeout being applied, it prioritized y over z.
   
   // -----------------------------------------------
   
@@ -105,8 +136,18 @@
   
   // Put your answer below -------------------------
   
-  
-  
+  // 1. Input: string
+  // 2. Output: string
+  // 3. Purpose: To reverse a string with a one-line function
+  // 4. Contract:
+  //// Function name: reverseStr is the variable, but function is anonymous
+  //// Parameters and types: str (string)
+  //// Return values and types: str.[...].join("") (string)
+
+  var reverseStr = (str) => (((str.split("")).reverse()).join(""));
+
+  console.log(reverseStr("How can I help you, King Dedede?"));
+
   // -----------------------------------------------
   
   //////////////////////////////////////////////////
@@ -119,7 +160,7 @@
   // and returns the hex code for that color.
   // Refactor this function to use an object
   // instead of an if/else statement.
-  
+
   var spanishColor = function(colorName) {
     if (colorName.toLowerCase() === "rojo") {
       return "#ff0000";
@@ -140,7 +181,24 @@
   
   // Put your answer below -------------------------
   
-  
+  // 1. Input: undefined
+  // 2. Output: none
+  // 3. Purpose: To sort colors in Spanish as an object instead of in if statements
+  // 4. Contract:
+  //// Function name: none (spanishColor as variable)
+  //// Parameters and types: colorName (undefined to start, object within function)
+  //// Return values and types: none
+
+  var spanishColor = function(colorName) {
+    colorName = { // colorName originates as undefined, so var is not needed here
+      "rojo": "#ff0000",
+      "blanco": "#ffffff",
+      "azul": "#0000ff",
+      "verde": "#00ff00",
+      "negro": "#000000"
+    };
+    console.log(colorName["verde"]); //for example
+  }();
   
   // -----------------------------------------------
   
@@ -158,6 +216,10 @@
   
   // Put your answer below -------------------------
   
+  // Not a function
+
+  var foo;
+  foo = "bar";
   
   // -----------------------------------------------
   
@@ -182,6 +244,18 @@
   
   // Put your answer below -------------------------
   
+  // 1. Input: function, number
+  // 2. Output: functions being called
+  // 3. Purpose: calls a function a certain number of specified times
+  // 4. Contract:
+  //// Function name: callNTimes is the variable
+  //// Parameters and types: callback (function), numberOfTimes (number)
+  //// Return values and types: none
+
+  var callNTimes = function(callback, numberOfTimes) {
+    var range = Array.from(Array(numberOfTimes).keys());
+    range.forEach(callback);
+  };
   
   // -----------------------------------------------
   
@@ -195,7 +269,7 @@
   // the savvy user to open the console and adjust
   // the score to whatever they want. Refactor the
   // code to protect from this.
-  
+
   // HINT: "global scope"
   
   var score = 0;
@@ -210,7 +284,25 @@
   
   // Put your answer below -------------------------
   
-  
+  // 1. Input: none
+  // 2. Output: none
+  // 3. Purpose: To increment the score variable without being able to be touched in the console
+  // 4. Contract:
+  //// Function name: game()
+  //// Parameters and types: none
+  //// Return values and types: none
+
+  function game() {
+    var score = 0;
+    var increaseScore = function() {
+      score++;
+    };
+    var decreaseScore = function() {
+      score--;
+    };
+  };
+
+  game();
   
   // -----------------------------------------------
   
@@ -231,7 +323,22 @@
   
   // Put your answer below -------------------------
   
+  // 1. Input: two numbers
+  // 2. Output: sum of the two numbers
+  // 3. Purpose: To add two numbers together (purpose of assignment is to make it return something instead of console log it)
+  // 4. Contract:
+  //// Function name: addNumbers is the variable
+  //// Parameters and types: numberA (number), numberB (number)
+  //// Return values and types: summation (number)
+
+  var addNumbers = function(numberA, numberB) {
+    const summation = numberA + numberB;
+    return summation;
+  };
   
+  var twoPlusTwo = `Two plus two equals ${addNumbers(2,2)}`;
+  
+  console.log(twoPlusTwo);
   
   // -----------------------------------------------
   
@@ -249,7 +356,7 @@
   // setting speed to NaN when no parameter is given
   // Then refactor the function to have a default
   // amount of 1 if no param is given.
-  
+
   var speed = 0;
   
   var accelerate = function(amount) {
@@ -258,7 +365,21 @@
   
   // Put your answer below -------------------------
   
-  
+  // amount is being declared undefined (not NaN in my console) in this scenario because it is not defined within the function before usage. An easy fix is to set the amount value to 1 upon defining the function itself, on the first function line.
+
+  // 1. Input: number
+  // 2. Output: console logged number
+  // 3. Purpose: to accelerate the vehicle in the racing game (not really!)
+  // 4. Contract:
+  //// Function name: accelerate is the variable name
+  //// Parameters and types: amount (number) = 1
+  //// Return values and types: changed speed variable (number)
+
+  var speed = 0;
+
+  var accelerate = function(amount=1) {
+    speed += amount;
+  };
   
   // -----------------------------------------------
   
