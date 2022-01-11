@@ -57,7 +57,7 @@
   // function
   
   function sayHi() {
-    alert("Hello, World!");
+    // alert("Hello, World!");
   }
   
   setTimeout(sayHi, 2000);
@@ -73,7 +73,7 @@
   //// Return values and types: no return
 
   setTimeout(function () {
-    alert("Hello, World!");
+    // alert("Hello, World!");
   }, 2000);
   
   // -----------------------------------------------
@@ -417,12 +417,19 @@
   //       ...
   //     });
   
-  var callLater = function(timeout, callback) {
-    setTimeout(callback, timeout);
-  };
+  // var callLater = function(timeout, callback) {
+  //   setTimeout(callback, timeout);
+  // };
   
   // Put your answer below -------------------------
   
+  var callLater = function(callback, timeout=1000) {
+    setTimeout(callback, timeout);
+  }; //The assignment deliberately switched callback and timeout between the function above and the setTimeout function within. (For some reason?) they need to be in the same position in both functions and then it works. Thanks to Daniel for pointing a solution out (mine is slightly different but still does the same thing).
+
+  callLater(function() {
+    alert("The bonus question is done!");
+  });
   
   // -----------------------------------------------
   
